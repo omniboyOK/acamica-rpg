@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Acamica - DWFS - RPG Game</title>
+        <link rel="stylesheet" href="css/documento.css">
+        <link rel="stylesheet" href="css/ui.css">
+    </head>
+    <body>
+
+        <h1 id="titulo">RPG Game</h1>
+        <div id="juego">
+            <div id="overlay-seleccion-personaje">
+                <ul class="personajes">
+                    <li class="personaje">
+                        Guerrero
+                    </li>
+                    <li class="personaje">
+                        Mago
+                    </li>
+                </ul>
+            </div>
+            <div class="panel">
+                <section class="seccion-estadisticas" id="seccion-estadisticas">
+                    <h2>Tu</h2>
+                    <ul class="fila-estadisticas">
+                        <li>
+                            <strong>Nombre</strong>
+                            <span>{{username}}</span>
+                        </li>
+                        <li>
+                            <strong>Tipo</strong>
+                            <span>{{character_type}}</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Ataque</strong>
+                            <span>45</span>
+                        </li>
+                        <li>
+                            <strong>Defensa</strong>
+                            <span>20</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Vida</strong>
+                            <span>1500/1500</span>
+                        </li>
+                        <li>
+                            <strong>Mana</strong>
+                            <span>1000/1000</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="seccion-acciones">
+                    <h2>Acciones</h2>
+                    <ul>
+                        <li>
+                            <button type="button">Atacar</button>
+                        </li>
+                        <li>
+                            <button type="button">Habilidad: Ataque doble</button>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Temporalmente deshabilitado -->
+                <!--
+                    <section id="seccion-habilidades">
+                        <h2>Habilidades</h2>
+                    </section>
+                -->
+            </div>
+            <div class="panel enemigo">
+                <section class="seccion-estadisticas" id="seccion-estadisticas-enemigo">
+                    <h2>Enemigo</h2>
+                    <ul class="fila-estadisticas">
+                        <li>
+                            <strong>Nombre</strong>
+                            <span>{{username}}</span>
+                        </li>
+                        <li>
+                            <strong>Tipo</strong>
+                            <span>{{character_type}}</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Ataque</strong>
+                            <span>45</span>
+                        </li>
+                        <li>
+                            <strong>Defensa</strong>
+                            <span>20</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Vida</strong>
+                            <span>1500/1500</span>
+                        </li>
+                        <li>
+                            <strong>Mana</strong>
+                            <span>1000/1000</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
