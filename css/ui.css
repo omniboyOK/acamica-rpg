@@ -31,8 +31,13 @@
     float: left;
 }
 
+#juego-historial {
+    width: calc(100% - 280px * 2);
+    float: left;
+}
+
 #juego .panel.enemigo {
-    float: right;
+    float: left;
     border-right: none;
     border-left: 1px solid #ccc;
 }
@@ -100,21 +105,54 @@ button {
     margin: 0;
 }
 
+#overlay-seleccion-personaje.oculto {
+    display: none;
+}
+
+#overlay-seleccion-personaje .usuario {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+#overlay-seleccion-personaje .usuario input {
+    padding: .5em 1em;
+    min-width: 320px;
+}
+
 #overlay-seleccion-personaje .personajes {
-    height: 100%;
+    height: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 #overlay-seleccion-personaje .personajes .personaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #ccc;
     box-shadow: 0px 1px 2px rgba(0,0,0,.1);
     margin: 0 10px;
     padding: 2em;
     cursor: pointer;
     transition: box-shadow 0.3s ease;
+}
+
+#overlay-seleccion-personaje .personajes .personaje span {
+    font-size: 10pt;
+}
+
+#overlay-seleccion-personaje .personajes .personaje strong {
+    padding-top: 1em;
 }
 
 #overlay-seleccion-personaje .personajes .personaje:hover {

@@ -8,16 +8,14 @@
     </head>
     <body>
 
-        <h1 id="titulo">RPG Game</h1>
+        <h1 id="titulo">Acamica RPG</h1>
         <div id="juego">
             <div id="overlay-seleccion-personaje">
-                <ul class="personajes">
-                    <li class="personaje">
-                        Guerrero
-                    </li>
-                    <li class="personaje">
-                        Mago
-                    </li>
+                <div class="usuario">
+                    <input type="text" placeholder="Ingresa tu nombre de usuario" id="nombre-de-usuario">
+                </div>
+                <ul class="personajes" id="contenedor-personajes">
+                    <!-- JS: Aca se van a imprimir los personajes definidos -->
                 </ul>
             </div>
             <div class="panel">
@@ -26,91 +24,85 @@
                     <ul class="fila-estadisticas">
                         <li>
                             <strong>Nombre</strong>
-                            <span>{{username}}</span>
+                            <span id="panel-nombre-usuario">{{username}}</span>
                         </li>
                         <li>
                             <strong>Tipo</strong>
-                            <span>{{character_type}}</span>
+                            <span id="panel-tipo-personaje">{{character_type}}</span>
                         </li>
                     </ul>
                     <ul class="columna-estadisticas">
                         <li>
                             <strong>Ataque</strong>
-                            <span>45</span>
+                            <span id="estadistica-ataque">45</span>
                         </li>
                         <li>
                             <strong>Defensa</strong>
-                            <span>20</span>
+                            <span id="estadistica-defensa">20</span>
                         </li>
                     </ul>
                     <ul class="columna-estadisticas">
                         <li>
                             <strong>Vida</strong>
-                            <span>1500/1500</span>
+                            <span id="estadistica-vida">1500/1500</span>
                         </li>
                         <li>
                             <strong>Mana</strong>
-                            <span>1000/1000</span>
+                            <span id="estadistica-mana">1000/1000</span>
                         </li>
                     </ul>
                 </section>
 
                 <section id="seccion-acciones">
                     <h2>Acciones</h2>
-                    <ul>
-                        <li>
+                    <ul id="habilidades-jugador">
+                        <!-- <li>
                             <button type="button">Atacar</button>
                         </li>
                         <li>
                             <button type="button">Habilidad: Ataque doble</button>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
-
-                <!-- Temporalmente deshabilitado -->
-                <!--
-                    <section id="seccion-habilidades">
-                        <h2>Habilidades</h2>
-                    </section>
-                -->
             </div>
+            <ul id="juego-historial">
+
+            </ul>
             <div class="panel enemigo">
                 <section class="seccion-estadisticas" id="seccion-estadisticas-enemigo">
                     <h2>Enemigo</h2>
                     <ul class="fila-estadisticas">
                         <li>
-                            <strong>Nombre</strong>
-                            <span>{{username}}</span>
-                        </li>
-                        <li>
                             <strong>Tipo</strong>
-                            <span>{{character_type}}</span>
+                            <span id="enemigo-panel-tipo-personaje">{{character_type}}</span>
                         </li>
                     </ul>
                     <ul class="columna-estadisticas">
                         <li>
                             <strong>Ataque</strong>
-                            <span>45</span>
+                            <span id="enemigo-estadistica-ataque">45</span>
                         </li>
                         <li>
                             <strong>Defensa</strong>
-                            <span>20</span>
+                            <span id="enemigo-estadistica-defensa">20</span>
                         </li>
                     </ul>
                     <ul class="columna-estadisticas">
                         <li>
                             <strong>Vida</strong>
-                            <span>1500/1500</span>
+                            <span id="enemigo-estadistica-vida">1500/1500</span>
                         </li>
                         <li>
                             <strong>Mana</strong>
-                            <span>1000/1000</span>
+                            <span id="enemigo-estadistica-mana">1000/1000</span>
                         </li>
                     </ul>
                 </section>
             </div>
         </div>
 
-        <script src="main.js"></script>
+        <!-- Este archivo contiene las variables globales -->
+        <script src="./scripts/globals.js"></script>
+        <script src="./scripts/main.js"></script>
     </body>
 </html>
