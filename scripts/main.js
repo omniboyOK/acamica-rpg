@@ -123,15 +123,17 @@ function mostrarPantallaJuego ()
 
 function actualizarHabilidadesJugador ()
 {
-    // Agregamos el boton "Atacar"
-    let botonAtacar = document.createElement('button')
-    botonAtacar.setAttribute('type', 'button')
-    botonAtacar.addEventListener('click', function () {
-        jugador.personaje.atacar(enemigoActual)
+    // Agregamos habilidades del personaje
+    jugador.personaje.habilidades.forEach(function(value, index){
+        let action = jugador.personaje.habilidades[index].accion
+        let boton = document.createElement('button')
+        boton.setAttribute('type', 'button')
+        boton.addEventListener('click', function(){
+            action(enemigoActual)
+        })
+        boton.innerHTML = jugador.personaje.habilidades[index].nombre
+        window.elemJugadorHabilidades.appendChild(boton)
     })
-    botonAtacar.innerHTML = 'Atacar!'
-
-    window.elemJugadorHabilidades.appendChild(botonAtacar)
 }
 
 function actualizarValoresJugador ()
