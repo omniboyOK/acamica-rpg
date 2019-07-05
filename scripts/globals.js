@@ -41,7 +41,7 @@ const libro = [
     {   
         id : 3,
         nombre: "fuego",
-        action : function hechizo(){
+        accion : function hechizo(){
             registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} lanzo fuego hacia ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
         }
     }
