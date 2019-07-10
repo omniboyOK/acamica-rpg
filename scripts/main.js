@@ -3,8 +3,12 @@
  * Dispara otras funciones.
  * @return {void}
  */
+
+var menu = $('#habilidades-jugador')
+
 function iniciar ()
 {
+    menu.hide()
     inicializarElementos()
     mostrarSeleccionPersonaje()
 }
@@ -113,8 +117,11 @@ function seleccionarPersonaje (personaje)
  */
 function mostrarPantallaJuego ()
 {
+    // Mostramos el menu de habilidades
+    menu.css('visibility', 'visible')
+    menu.transition('fly right')
     // Ocultamos la pantalla de seleccion de personaje
-    window.elemPantallaSeleccion.classList.add('oculto')
+    $('#overlay-seleccion-personaje').transition('scale')
 
     // Selecciona el proximo enemigo
     siguienteEnemigo()
@@ -132,9 +139,8 @@ function actualizarHabilidadesJugador ()
     // Agregamos habilidades del personaje
     jugador.personaje.habilidades.forEach(function(value, index){
         let action = jugador.personaje.habilidades[index].accion
-        let boton = document.createElement('button')
-        boton.classList.add('ui', 'button')
-        boton.setAttribute('type', 'button')
+        let boton = document.createElement('a')
+        boton.classList.add('ui', 'teal', 'item')
         boton.addEventListener('click', function(){
             action(enemigoActual)
         })
@@ -170,7 +176,10 @@ function actualizarValoresEnemigo ()
             percent: (enemigoActual.estadisticas.vida * 100) / enemigoActual.estadisticas.maxVida
     });
     if(enemigoActual.estadisticas.vida <= 0){
+        $('.panel.enemigo').transition('scale', 1000)
         siguienteEnemigo()
+        $('.panel.enemigo').transition('scale')
+        actualizarValoresEnemigo()
     }
 }
 
@@ -184,7 +193,6 @@ function siguienteEnemigo ()
         let enemigo = enemigos.shift()
         console.log(enemigo)
         enemigoActual = enemigo
-        actualizarValoresEnemigo()
         registrar(`El proximo enemigo es ${enemigo.tipo}`, false)
     } else {
         registrar(`No quedan más enemigos`, false)

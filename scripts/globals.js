@@ -7,7 +7,8 @@
  * podemos considerar que "manejan el estado" del juego.
  */
 
- // Variable del log donde vemos que sucede
+
+ // Variables de Jquery
  var log = $('#juego-historial')
  function scrollLog(){
      log.animate({scrollTop:$("#juego-historial")[0].scrollHeight}, 500);
@@ -29,6 +30,7 @@ const libro = [
         id : 1,
         nombre: "atacar",
         accion : function atacar(objetivo){
+            $('.panel.enemigo').transition('shake')
             const danioEfectuado = (jugador.personaje.estadisticas.ataque * 2) - objetivo.estadisticas.defensa
             registrar(`has hecho ${danioEfectuado} de daño`)
             objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
