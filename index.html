@@ -22,41 +22,52 @@
             <div class="panel">
                 <section class="seccion-estadisticas" id="seccion-estadisticas">
                     <h2>Tu</h2>
-                    <ul class="fila-estadisticas">
-                        <li>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="placeholder.png">
+                        </div>
+                            
+                        <div class="content">
                             <strong>Nombre</strong>
-                            <span id="panel-nombre-usuario">{{username}}</span>
-                        </li>
-                        <li>
-                            <strong>Tipo</strong>
-                            <span id="panel-tipo-personaje">{{character_type}}</span>
-                        </li>
-                    </ul>
-                    <ul class="columna-estadisticas">
-                        <li>
-                            <strong>Ataque</strong>
-                            <span id="estadistica-ataque">45</span>
-                        </li>
-                        <li>
-                            <strong>Defensa</strong>
-                            <span id="estadistica-defensa">20</span>
-                        </li>
-                    </ul>
-                    <ul class="columna-estadisticas">
-                        <li>
-                            <strong>Vida</strong>
-                            <div class="ui progress" id="player_lifebar">
-                                <div class="bar">
-                                  <div class="progress"></div>
+                            <span class="header" id="panel-nombre-usuario">{{username}}</span>
+                        </div>
+                        <ul class="fila-estadisticas">
+                            <li>
+                                <strong>Tipo</strong>
+                                <span id="panel-tipo-personaje">{{character_type}}</span>
+                            </li>
+                        </ul>
+                        <ul class="columna-estadisticas">
+                            <li>
+                                <strong>Ataque</strong>
+                                <span id="estadistica-ataque">45</span>
+                            </li>
+                            <li>
+                                <strong>Defensa</strong>
+                                <span id="estadistica-defensa">20</span>
+                            </li>
+                        </ul>
+                        <ul class="columna-estadisticas">
+                            <li>
+                                <strong>Vida</strong>
+                                <div class="ui indicating progress" id="player_lifebar">
+                                    <div class="bar">
+                                        <div class="progress"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <span id="estadistica-vida"></span>
-                        </li>
-                        <li>
-                            <strong>Mana</strong>
-                            <span id="estadistica-mana"></span>
-                        </li>
-                    </ul>
+                                <span id="estadistica-vida"></span>
+                            </li>
+                            <li>
+                                <strong>Mana</strong>
+                                <div class="ui mana progress" id="player_manabar">
+                                    <div class="bar">
+                                        <div class="progress"></div>
+                                    </div>
+                                </div>
+                                <span id="estadistica-mana"></span>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section id="seccion-acciones">
@@ -77,37 +88,50 @@
             <div class="panel enemigo">
                 <section class="seccion-estadisticas" id="seccion-estadisticas-enemigo">
                     <h2>Enemigo</h2>
-                    <ul class="fila-estadisticas">
-                        <li>
-                            <strong>Tipo</strong>
-                            <span id="enemigo-panel-tipo-personaje">{{character_type}}</span>
-                        </li>
-                    </ul>
-                    <ul class="columna-estadisticas">
-                        <li>
-                            <strong>Ataque</strong>
-                            <span id="enemigo-estadistica-ataque">45</span>
-                        </li>
-                        <li>
-                            <strong>Defensa</strong>
-                            <span id="enemigo-estadistica-defensa">20</span>
-                        </li>
-                    </ul>
-                    <ul class="columna-estadisticas">
-                        <li>
-                            <strong>Vida</strong>
-                            <div class="ui progress" id="enemy_lifebar">
-                                <div class="bar">
-                                    <div class="progress"></div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="placeholder.png">
+                        </div>
+                        <div class="content">
+                            <ul class="fila-estadisticas">
+                                <li>
+                                    <strong>Tipo</strong>
+                                    <span id="enemigo-panel-tipo-personaje">{{character_type}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <ul class="columna-estadisticas">
+                            <li>
+                                <strong>Ataque</strong>
+                                <span id="enemigo-estadistica-ataque">45</span>
+                            </li>
+                            <li>
+                                <strong>Defensa</strong>
+                                <span id="enemigo-estadistica-defensa">20</span>
+                            </li>
+                        </ul>
+                        <ul class="columna-estadisticas">
+                            <li>
+                                <strong>Vida</strong>
+                                <div class="ui indicating progress" id="enemy_lifebar">
+                                    <div class="bar">
+                                        <div class="progress"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <span id="enemigo-estadistica-vida"></span>
-                        </li>
-                        <li>
-                            <strong>Mana</strong>
-                            <span id="enemigo-estadistica-mana">1000/1000</span>
-                        </li>
-                    </ul>
+                                <span id="enemigo-estadistica-vida"></span>
+                            </li>
+                            <li>
+                                <strong>Mana</strong>
+                                <div class="ui mana progress" id="enemy_manabar">
+                                    <div class="bar">
+                                        <div class="progress"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
                 </section>
             </div>
         </div>

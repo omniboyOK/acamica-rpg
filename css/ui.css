@@ -12,11 +12,24 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    background-color: #63707e;
+}
+
+.ui.progress.mana .bar,
+.ui.progress.mana.success .bar {
+    background-color: blue !important;
+}
+
+.ui.card {
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #titulo {
     /* color: gold; */
-    color: #444;
+    color: white;
     margin: 0;
     position: absolute;
     top: 15px;
@@ -27,6 +40,7 @@ body {
     height: 600px;
     width: 1100px;
     position: relative;
+    background-color: #f2f6f5;
     /* border: 2px solid gold;
     animation: brillar 5s ease-in-out infinite; */
 }
@@ -42,7 +56,9 @@ body {
 
 #juego-historial {
     width: calc(100% - 280px * 2);
+    height: 100%;
     float: left;
+    overflow: scroll;
 }
 
 #juego .panel.enemigo {
@@ -61,19 +77,21 @@ body {
     margin-top: 0;
     margin-bottom: 10px;
     padding: 0;
+    color: #63707e;
 }
 
 .seccion-estadisticas .fila-estadisticas li,
-.seccion-estadisticas .columna-estadisticas li {
+.seccion-estadisticas .columna-estadisticas li,
+.seccion-estadisticas .panel-tipo-personaje li {
     margin-bottom: 10px;
 }
 
 .seccion-estadisticas .fila-estadisticas,
-.seccion-estadisticas .columna-estadisticas {
+.seccion-estadisticas .columna-estadisticas,
+.seccion-estadisticas .panel-tipo-personaje {
     margin: 0;
     padding: 0;
     list-style: none;
-    float: left;
 }
 
 .seccion-estadisticas .columna-estadisticas {
@@ -88,20 +106,25 @@ body {
 .seccion-estadisticas .fila-estadisticas strong {
     width: 100%;
     display: inline-block;
-    text-align: left;
+    text-align: center;
 }
 
 .seccion-estadisticas .columna-estadisticas span,
-.seccion-estadisticas .columna-estadisticas strong {
+.seccion-estadisticas .columna-estadisticas strong{
     width: 100%;
     display: inline-block;
     text-align: center;
 }
 
-button {
+.ui.button {
     padding: .5em 1em;
     margin: 1em;
     min-width: 100px;
+    min-height: 50px;
+}
+
+.ui.progress {
+    margin: 0;
 }
 
 #overlay-seleccion-personaje {
@@ -111,9 +134,9 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    color: #444;
     margin: 0;
     border: none;
+    background-color: #f2f6f5;
 }
 
 #overlay-seleccion-personaje.oculto {

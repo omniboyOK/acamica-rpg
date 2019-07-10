@@ -149,11 +149,12 @@ function actualizarValoresJugador ()
     window.elemJugadorTipoPersonaje.innerHTML = jugador.personaje.tipo
     window.elemJugadorEstadisticaAtaque.innerHTML = jugador.personaje.estadisticas.ataque
     window.elemJugadorEstadisticaDefensa.innerHTML = jugador.personaje.estadisticas.defensa
-    window.elemJugadorEstadisticaMana.innerHTML =
-        jugador.personaje.estadisticas.mana + '/' + jugador.personaje.estadisticas.maxMana
         $('#player_lifebar').progress({
             percent: (jugador.personaje.estadisticas.vida * 100) / jugador.personaje.estadisticas.maxVida
           });
+        $('#player_manabar').progress({
+        percent: (jugador.personaje.estadisticas.mana * 100) / jugador.personaje.estadisticas.maxMana
+        });
 
 }
 
@@ -162,14 +163,12 @@ function actualizarValoresEnemigo ()
     window.elemEnemigoTipoPersonaje.innerHTML = enemigoActual.tipo
     window.elemEnemigoEstadisticaAtaque.innerHTML = enemigoActual.estadisticas.ataque
     window.elemEnemigoEstadisticaDefensa.innerHTML = enemigoActual.estadisticas.defensa
-    window.elemEnemigoEstadisticaMana.innerHTML = enemigoActual.estadisticas.mana + '/' + enemigoActual.estadisticas.maxMana
-        $('#enemy_lifebar').progress({
+    $('#enemy_manabar').progress({
+        percent: (enemigoActual.estadisticas.mana * 100) / enemigoActual.estadisticas.maxMana
+      });    
+    $('#enemy_lifebar').progress({
             percent: (enemigoActual.estadisticas.vida * 100) / enemigoActual.estadisticas.maxVida
-          });
-        checkearMuerte();
-}
-
-function checkearMuerte(){
+    });
     if(enemigoActual.estadisticas.vida <= 0){
         siguienteEnemigo()
     }
@@ -181,11 +180,16 @@ function checkearMuerte(){
  */
 function siguienteEnemigo ()
 {
-    const indiceAleatorio = Math.floor(Math.random() * enemigos.length)
-    let enemigo = enemigos[indiceAleatorio]
-    console.log(enemigo)
-    enemigoActual = enemigo
-    registrar(`El proximo enemigo es ${enemigo.tipo}`, false)
+    if(enemigos.length > 0){
+        let enemigo = enemigos.shift()
+        console.log(enemigo)
+        enemigoActual = enemigo
+        actualizarValoresEnemigo()
+        registrar(`El proximo enemigo es ${enemigo.tipo}`, false)
+    } else {
+        registrar(`No quedan más enemigos`, false)
+    }
+    
 }
 
 /**
@@ -199,9 +203,10 @@ function registrar (evento, jugador = true)
     let s = d.getSeconds().toString().padStart(2, '0')
     let hora = '[' + h + ':' + m + ':' + s + ']'
     let registro = document.createElement('li')
-    registro.style.color = jugador ? 'blue' : 'red'
+    registro.style.color = jugador ? '#614ad3' : '#e42c64'
     registro.innerHTML = hora + ' ' + evento
     window.elemHistorial.appendChild(registro)
+    scrollLog()
 }
 
 // Agregamos un listener, que escucha el evento

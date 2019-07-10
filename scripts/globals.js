@@ -7,6 +7,12 @@
  * podemos considerar que "manejan el estado" del juego.
  */
 
+ // Variable del log donde vemos que sucede
+ var log = $('#juego-historial')
+ function scrollLog(){
+     log.animate({scrollTop:$("#juego-historial")[0].scrollHeight}, 500);
+ }
+
 // Creamos un array que guarda las habilidades del juego
 // de esta manera podemos tomar y quitar habilidades de
 // manera dinamica, el proceso para tomar habilidades
@@ -23,7 +29,8 @@ const libro = [
         id : 1,
         nombre: "atacar",
         accion : function atacar(objetivo){
-            const danioEfectuado = objetivo.estadisticas.ataque * (100 / 100 + objetivo.estadisticas.defensa)
+            const danioEfectuado = (jugador.personaje.estadisticas.ataque * 2) - objetivo.estadisticas.defensa
+            registrar(`has hecho ${danioEfectuado} de daño`)
             objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
             registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} ataca a ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
             actualizarValoresEnemigo()
@@ -41,8 +48,11 @@ const libro = [
     {   
         id : 3,
         nombre: "fuego",
-        accion : function hechizo(){
+        accion : function hechizo(objetivo){
+            const danioEfectuado = objetivo.estadisticas.ataque * 3
+            objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
             registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} lanzo fuego hacia ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
+            actualizarValoresEnemigo()
         }
     }
 ]
@@ -70,10 +80,10 @@ const personajes = [
     new Personaje(
         'Guerrero',
         {
-            ataque: 45,
-            defensa: 60,
-            maxVida: 2500,
-            vida: 2500,
+            ataque: 60,
+            defensa: 50,
+            maxVida: 600,
+            vida: 600,
             maxMana: 1000,
             mana: 1000
         },
@@ -87,10 +97,10 @@ const personajes = [
     new Personaje(
         'Mago',
         {
-            ataque: 60,
-            defensa: 30,
-            maxVida: 2000,
-            vida: 2000,
+            ataque: 30,
+            defensa: 20,
+            maxVida: 400,
+            vida: 400,
             maxMana: 2500,
             mana: 2500
         },
@@ -107,18 +117,18 @@ const enemigos = [
     new Personaje('Ogro', {
         ataque: 20,
         defensa: 30,
-        maxVida: 2500,
-        vida: 2500,
+        maxVida: 250,
+        vida: 250,
         maxMana: 750,
         mana: 750
     },
     [],
      true),
     new Personaje('Dragon', {
-        ataque: 80,
-        defensa: 120,
-        maxVida: 3250,
-        vida: 3250,
+        ataque: 10,
+        defensa: 20,
+        maxVida: 500,
+        vida: 500,
         maxMana: 100,
         mana: 100
     },
@@ -126,8 +136,17 @@ const enemigos = [
     new Personaje('Lagarto', {
         ataque: 10,
         defensa: 10,
-        maxVida: 1500,
-        vida: 1500,
+        maxVida: 800,
+        vida: 800,
+        maxMana: 250,
+        mana: 250
+    },
+    [], true),
+    new Personaje('Lagarto', {
+        ataque: 10,
+        defensa: 10,
+        maxVida: 800,
+        vida: 800,
         maxMana: 250,
         mana: 250
     },
