@@ -4,6 +4,16 @@
     100% { box-shadow: 0px 4px 15px gold; }
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
 #titulo {
     /* color: gold; */
     color: #444;
@@ -16,7 +26,6 @@
 #juego {
     height: 600px;
     width: 1100px;
-    border: 1px solid #ccc;
     position: relative;
     /* border: 2px solid gold;
     animation: brillar 5s ease-in-out infinite; */
@@ -91,18 +100,20 @@
 
 button {
     padding: .5em 1em;
-    margin-bottom: 1em;
+    margin: 1em;
+    min-width: 100px;
 }
 
 #overlay-seleccion-personaje {
+    z-index: 2;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
     color: #444;
     margin: 0;
+    border: none;
 }
 
 #overlay-seleccion-personaje.oculto {
@@ -110,18 +121,12 @@ button {
 }
 
 #overlay-seleccion-personaje .usuario {
-    height: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    margin: 0;
+    margin-top: 10%;
     padding: 0;
-}
-
-#overlay-seleccion-personaje .usuario input {
-    padding: .5em 1em;
-    min-width: 320px;
 }
 
 #overlay-seleccion-personaje .personajes {
@@ -139,7 +144,6 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ccc;
     box-shadow: 0px 1px 2px rgba(0,0,0,.1);
     margin: 0 10px;
     padding: 2em;
@@ -157,4 +161,20 @@ button {
 
 #overlay-seleccion-personaje .personajes .personaje:hover {
     box-shadow: 0px 2px 10px rgba(0,0,0,.2);
+}
+
+#user-form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-form input{
+    width: 100%;
+}
+
+#user-form #alert {
+    position: absolute;
+    top: 3em;
+    width: 100%
 }

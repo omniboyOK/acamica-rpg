@@ -55,7 +55,7 @@ function mostrarSeleccionPersonaje ()
         let contenedorPersonaje = document.createElement('li')
 
         // Le agregamos la clase 'personaje'
-        contenedorPersonaje.classList.add('personaje')
+        contenedorPersonaje.classList.add('personaje', 'ui', 'button')
 
         // Le agregamos el HTML correspondiente
         contenedorPersonaje.innerHTML = `
@@ -79,10 +79,16 @@ function mostrarSeleccionPersonaje ()
  */
 function seleccionarPersonaje (personaje)
 {
+    let alert = $('#alert')
     // Si no se ingreso un nombre de usuario,
     // mostrar una alerta y volver.
     if (!window.elemNombreDeUsuario.value) {
-        alert('Ingrese un nombre de usuario!')
+        alert.html(`
+        <div class="ui warning message">
+            <i class="icon warning"></i>
+            Debes ingresar un nombre para tu personaje!
+        </div>`).show()
+        alert.fadeOut(3000)
         return false
     }
 
@@ -127,6 +133,7 @@ function actualizarHabilidadesJugador ()
     jugador.personaje.habilidades.forEach(function(value, index){
         let action = jugador.personaje.habilidades[index].accion
         let boton = document.createElement('button')
+        boton.classList.add('ui', 'button')
         boton.setAttribute('type', 'button')
         boton.addEventListener('click', function(){
             action(enemigoActual)
@@ -142,10 +149,12 @@ function actualizarValoresJugador ()
     window.elemJugadorTipoPersonaje.innerHTML = jugador.personaje.tipo
     window.elemJugadorEstadisticaAtaque.innerHTML = jugador.personaje.estadisticas.ataque
     window.elemJugadorEstadisticaDefensa.innerHTML = jugador.personaje.estadisticas.defensa
-    window.elemJugadorEstadisticaVida.innerHTML =
-        jugador.personaje.estadisticas.vida + '/' + jugador.personaje.estadisticas.maxVida
     window.elemJugadorEstadisticaMana.innerHTML =
         jugador.personaje.estadisticas.mana + '/' + jugador.personaje.estadisticas.maxMana
+        $('#player_lifebar').progress({
+            percent: (jugador.personaje.estadisticas.vida * 100) / jugador.personaje.estadisticas.maxVida
+          });
+
 }
 
 function actualizarValoresEnemigo ()
@@ -153,10 +162,17 @@ function actualizarValoresEnemigo ()
     window.elemEnemigoTipoPersonaje.innerHTML = enemigoActual.tipo
     window.elemEnemigoEstadisticaAtaque.innerHTML = enemigoActual.estadisticas.ataque
     window.elemEnemigoEstadisticaDefensa.innerHTML = enemigoActual.estadisticas.defensa
-    window.elemEnemigoEstadisticaVida.innerHTML =
-        enemigoActual.estadisticas.vida + '/' + enemigoActual.estadisticas.maxVida
-    window.elemEnemigoEstadisticaMana.innerHTML =
-        enemigoActual.estadisticas.mana + '/' + enemigoActual.estadisticas.maxMana
+    window.elemEnemigoEstadisticaMana.innerHTML = enemigoActual.estadisticas.mana + '/' + enemigoActual.estadisticas.maxMana
+        $('#enemy_lifebar').progress({
+            percent: (enemigoActual.estadisticas.vida * 100) / enemigoActual.estadisticas.maxVida
+          });
+        checkearMuerte();
+}
+
+function checkearMuerte(){
+    if(enemigoActual.estadisticas.vida <= 0){
+        siguienteEnemigo()
+    }
 }
 
 /**

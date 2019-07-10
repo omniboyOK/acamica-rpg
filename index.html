@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <link rel="stylesheet" href="Semantic-UI-CSS-master/semantic.css">
         <meta charset="utf-8">
         <title>Acamica - DWFS - RPG Game</title>
-        <link rel="stylesheet" href="css/documento.css">
         <link rel="stylesheet" href="css/ui.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <body>
-
         <h1 id="titulo">Acamica RPG</h1>
-        <div id="juego">
-            <div id="overlay-seleccion-personaje">
-                <div class="usuario">
+        <div class="ui segment" id="juego">
+            <div class="ui segment" id="overlay-seleccion-personaje">
+                <form class="ui input usuario" id="user-form">
                     <input type="text" placeholder="Ingresa tu nombre de usuario" id="nombre-de-usuario">
-                </div>
+                    <div id="alert"></div>
+                </form>
                 <ul class="personajes" id="contenedor-personajes">
                     <!-- JS: Aca se van a imprimir los personajes definidos -->
                 </ul>
@@ -44,18 +45,23 @@
                     <ul class="columna-estadisticas">
                         <li>
                             <strong>Vida</strong>
-                            <span id="estadistica-vida">1500/1500</span>
+                            <div class="ui progress" id="player_lifebar">
+                                <div class="bar">
+                                  <div class="progress"></div>
+                                </div>
+                            </div>
+                            <span id="estadistica-vida"></span>
                         </li>
                         <li>
                             <strong>Mana</strong>
-                            <span id="estadistica-mana">1000/1000</span>
+                            <span id="estadistica-mana"></span>
                         </li>
                     </ul>
                 </section>
 
                 <section id="seccion-acciones">
                     <h2>Acciones</h2>
-                    <ul id="habilidades-jugador">
+                    <ul id="habilidades-jugador" class="ui four column grid">
                         <!-- <li>
                             <button type="button">Atacar</button>
                         </li>
@@ -90,7 +96,12 @@
                     <ul class="columna-estadisticas">
                         <li>
                             <strong>Vida</strong>
-                            <span id="enemigo-estadistica-vida">1500/1500</span>
+                            <div class="ui progress" id="enemy_lifebar">
+                                <div class="bar">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                            <span id="enemigo-estadistica-vida"></span>
                         </li>
                         <li>
                             <strong>Mana</strong>
@@ -104,5 +115,6 @@
         <!-- Este archivo contiene las variables globales -->
         <script src="./scripts/globals.js"></script>
         <script src="./scripts/main.js"></script>
+        <script src="Semantic-UI-CSS-master/semantic.js"></script>
     </body>
 </html>
