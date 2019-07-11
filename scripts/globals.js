@@ -46,24 +46,54 @@ const libro = [
     {
         id : 0,
         nombre: 'procrastinar',
-        accion: function nothing(objetivo){
-            console.log('this action do nothing')
-            $('#seccion-estadisticas .ui.card').transition('jiggle')
-            registrar(`No has hecho nada`)
-            nextTurn()
+        accion: function nothing(){
+            switch(this.esEnemigo){
+                case false : {
+                    var objetivo = this
+                    console.log('this action do nothing')
+                    $('#seccion-estadisticas .ui.card').transition('jiggle')
+                    registrar(`${this.esEnemigo ? this.tipo : this.nombre} No ha hecho nada`)
+                    nextTurn()
+                }
+                break
+                case true : {
+                    var objetivo = this
+                    console.log('this action do nothing')
+                    $('.panel.enemigo .ui.card').transition('jiggle')
+                    registrar(`${this.esEnemigo ? this.tipo : this.nombre} No ha hecho nada`)
+                    nextTurn()
+                }
+                
+            }
         }
     },
     {   
         id : 1,
         nombre: "atacar",
-        accion : function atacar(objetivo){
-            $('.panel.enemigo .ui.card').transition('shake')
-            const danioEfectuado = (jugador.personaje.estadisticas.ataque * 2) - objetivo.estadisticas.defensa
-            registrar(`has hecho ${danioEfectuado} de daño`)
-            objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
-            registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} ataca a ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
-            actualizarValoresEnemigo()
-            nextTurn()
+        accion : function atacar(){
+            switch(this.esEnemigo){
+                default : {
+                    $('.panel.enemigo .ui.card').transition('shake')
+                    const danioEfectuado = (jugador.personaje.estadisticas.ataque * 2) - enemigoActual.estadisticas.defensa
+                    enemigoActual.estadisticas.vida -= danioEfectuado
+                    registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} ataca a ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
+                    registrar(`has hecho ${danioEfectuado} de daño`)
+                    actualizarValoresEnemigo()
+                    actualizarValoresJugador()
+                    nextTurn()
+                }
+                break
+                case true : {
+                    $('#seccion-estadisticas .ui.card').transition('shake')
+                    const danioEfectuado = (this.estadisticas.ataque * 2) - jugador.personaje.estadisticas.defensa
+                    enemigoActual.estadisticas.vida -= danioEfectuado
+                    registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} ataca a ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
+                    registrar(`has hecho ${danioEfectuado} de daño`)
+                    actualizarValoresEnemigo()
+                    actualizarValoresJugador()
+                    nextTurn()
+                }
+            }
         }
     },
     {   
@@ -79,7 +109,7 @@ const libro = [
     {   
         id : 3,
         nombre: "fuego",
-        accion : function hechizo(objetivo){
+        accion : function hechizo(){
             if(jugador.personaje.estadisticas.mana > 500){
                 $('.panel.enemigo .ui.card').transition('shake')
                 const danioEfectuado = jugador.personaje.estadisticas.ataque * 3
@@ -178,7 +208,12 @@ const enemigos = [
         mana: 100,
         portrait: "img/enemigos/slime.png"
     },
-    [], true),
+    [
+        1,
+        2,
+        3,
+        4
+    ], true),
     new Personaje('Demonio', {
         ataque: 10,
         defensa: 10,
@@ -188,7 +223,12 @@ const enemigos = [
         mana: 250,
         portrait: "img/enemigos/demonio.png"
     },
-    [], true),
+    [
+        1,
+        2,
+        3,
+        4
+    ], true),
     new Personaje('Esqueleto', {
         ataque: 10,
         defensa: 10,
@@ -198,7 +238,12 @@ const enemigos = [
         mana: 250,
         portrait: "img/enemigos/esqueleto.png"
     },
-    [], true)
+    [
+        1,
+        2,
+        3,
+        4
+    ], true)
 ]
 
 // En esta variable global se va a guardar el personaje seleccionado.

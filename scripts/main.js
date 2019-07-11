@@ -141,7 +141,7 @@ function actualizarHabilidadesJugador ()
         let boton = document.createElement('a')
         boton.classList.add('ui', 'teal', 'item')
         boton.addEventListener('click', function(){
-            action(enemigoActual)
+            action()
         })
         boton.innerHTML = jugador.personaje.habilidades[index].nombre
         window.elemJugadorHabilidades.appendChild(boton)
@@ -173,12 +173,12 @@ function actualizarValoresEnemigo ()
     // Con Progress de semantic podemos actualizar una barra de vida o mana
     $('#enemy_manabar').progress({
         percent: (enemigoActual.estadisticas.mana * 100) / enemigoActual.estadisticas.maxMana
-      });    
-    $('#enemy_lifebar').progress({
-            percent: (enemigoActual.estadisticas.vida * 100) / enemigoActual.estadisticas.maxVida
-    });
+      });
     // Si el enemigo muere, lo descartamos y pasamos al siguiente
     if(enemigoActual.estadisticas.vida <= 0){
+        $('#enemy_lifebar').progress({
+            percent: 0
+        });
         $('.panel.enemigo .ui.card').transition('scale', 1000)
         siguienteEnemigo()
         setTimeout(function(){
@@ -186,6 +186,10 @@ function actualizarValoresEnemigo ()
         }, 1700);
         
         $('.panel.enemigo .ui.card').transition('scale')
+    } else {
+        $('#enemy_lifebar').progress({
+            percent: (enemigoActual.estadisticas.vida * 100) / enemigoActual.estadisticas.maxVida
+        });
     }
 }
 
