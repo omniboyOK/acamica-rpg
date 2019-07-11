@@ -4,8 +4,6 @@
  * @return {void}
  */
 
-var menu = $('#habilidades-jugador')
-
 function iniciar ()
 {
     menu.hide()
@@ -118,9 +116,9 @@ function seleccionarPersonaje (personaje)
  */
 function mostrarPantallaJuego ()
 {
+    nextTurn()
     // Mostramos el menu de habilidades
     menu.css('visibility', 'visible')
-    menu.transition('fly right')
     // Ocultamos la pantalla de seleccion de personaje
     $('#overlay-seleccion-personaje').transition('scale')
 
@@ -222,6 +220,7 @@ function registrar (evento, jugador = true)
     let s = d.getSeconds().toString().padStart(2, '0')
     let hora = '[' + h + ':' + m + ':' + s + ']'
     let registro = document.createElement('li')
+    // Si es true el color es azul si es false es rojo
     registro.style.color = jugador ? '#614ad3' : '#e42c64'
     registro.innerHTML = hora + ' ' + evento
     window.elemHistorial.appendChild(registro)

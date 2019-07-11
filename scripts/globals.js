@@ -13,6 +13,30 @@
  function scrollLog(){
      log.animate({scrollTop:$("#juego-historial")[0].scrollHeight}, 500);
  }
+ 
+var menu = $('#habilidades-jugador')
+
+// Variable que maneja los turnos
+
+var turnoJugador = true
+
+function swapTurn(){
+    turnoJugador = !turnoJugador
+}
+
+function nextTurn(){
+    if(turnoJugador){
+        menu.transition('fly right')
+        swapTurn()
+    } else {
+        menu.transition('fly right')
+        swapTurn()
+        setTimeout(function(){
+            registrar(`Durante su turno, el ${enemigoActual.tipo} no ha hecho nada`, false)
+            nextTurn()
+        }, 2000)
+    }
+}
 
 // Creamos un array que guarda las habilidades del juego
 // de esta manera podemos tomar y quitar habilidades de
@@ -21,9 +45,12 @@
 const libro = [
     {
         id : 0,
-        nombre: '',
+        nombre: 'procrastinar',
         accion: function nothing(objetivo){
             console.log('this action do nothing')
+            $('#seccion-estadisticas .ui.card').transition('jiggle')
+            registrar(`No has hecho nada`)
+            nextTurn()
         }
     },
     {   
@@ -36,6 +63,7 @@ const libro = [
             objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
             registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} ataca a ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
             actualizarValoresEnemigo()
+            nextTurn()
         }
     },
     {   
@@ -45,16 +73,23 @@ const libro = [
             jugador.personaje.estadisticas.defensa += 10
             actualizarValoresJugador()
             registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} ha aumentado su defensa!`, !this.esEnemigo)
+            nextTurn()
         }
     },
     {   
         id : 3,
         nombre: "fuego",
         accion : function hechizo(objetivo){
-            const danioEfectuado = objetivo.estadisticas.ataque * 3
-            objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
-            registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} lanzo fuego hacia ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
-            actualizarValoresEnemigo()
+            if(jugador.personaje.estadisticas.mana > 500){
+                $('.panel.enemigo .ui.card').transition('shake')
+                const danioEfectuado = jugador.personaje.estadisticas.ataque * 3
+                objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
+                jugador.personaje.estadisticas.mana -= 500
+                registrar(`${!this.esEnemigo ? jugador.nombre : enemigoActual.tipo} lanzo fuego hacia ${this.esEnemigo ? jugador.nombre : enemigoActual.tipo}`, !this.esEnemigo)
+                actualizarValoresEnemigo()
+                actualizarValoresJugador()
+                nextTurn()
+            } else registrar(`No tienes suficiente mana`)
         }
     }
 ]
@@ -127,7 +162,12 @@ const enemigos = [
         mana: 750,
         portrait: "img/enemigos/orco.png"
     },
-    [],
+    [
+        1,
+        2,
+        3,
+        4
+    ],
      true),
     new Personaje('Slime', {
         ataque: 10,
