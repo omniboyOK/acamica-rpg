@@ -35,6 +35,7 @@ function inicializarElementos ()
     window.elemJugadorEstadisticaMana      = document.getElementById('estadistica-mana')
     window.elemJugadorHabilidades          = document.getElementById('habilidades-jugador')
 
+
     // Estos corresponden al panel del enemigo
     window.elemEnemigoTipoPersonaje        = document.getElementById('enemigo-panel-tipo-personaje')
     window.elemEnemigoEstadisticaAtaque    = document.getElementById('enemigo-estadistica-ataque')
@@ -151,35 +152,42 @@ function actualizarHabilidadesJugador ()
 
 function actualizarValoresJugador ()
 {
+    $('#player_portrait').children().attr('src', jugador.personaje.estadisticas.portrait)
     window.elemJugadorNombreUsuario.innerHTML = jugador.nombre
     window.elemJugadorTipoPersonaje.innerHTML = jugador.personaje.tipo
     window.elemJugadorEstadisticaAtaque.innerHTML = jugador.personaje.estadisticas.ataque
     window.elemJugadorEstadisticaDefensa.innerHTML = jugador.personaje.estadisticas.defensa
+    // Con Progress de semantic podemos actualizar una barra de vida o mana
         $('#player_lifebar').progress({
             percent: (jugador.personaje.estadisticas.vida * 100) / jugador.personaje.estadisticas.maxVida
           });
         $('#player_manabar').progress({
         percent: (jugador.personaje.estadisticas.mana * 100) / jugador.personaje.estadisticas.maxMana
         });
-
 }
 
 function actualizarValoresEnemigo ()
 {
+    $('#enemy_portrait').children().attr('src', enemigoActual.estadisticas.portrait)
     window.elemEnemigoTipoPersonaje.innerHTML = enemigoActual.tipo
     window.elemEnemigoEstadisticaAtaque.innerHTML = enemigoActual.estadisticas.ataque
     window.elemEnemigoEstadisticaDefensa.innerHTML = enemigoActual.estadisticas.defensa
+    // Con Progress de semantic podemos actualizar una barra de vida o mana
     $('#enemy_manabar').progress({
         percent: (enemigoActual.estadisticas.mana * 100) / enemigoActual.estadisticas.maxMana
       });    
     $('#enemy_lifebar').progress({
             percent: (enemigoActual.estadisticas.vida * 100) / enemigoActual.estadisticas.maxVida
     });
+    // Si el enemigo muere, lo descartamos y pasamos al siguiente
     if(enemigoActual.estadisticas.vida <= 0){
-        $('.panel.enemigo').transition('scale', 1000)
+        $('.panel.enemigo .ui.card').transition('scale', 1000)
         siguienteEnemigo()
-        $('.panel.enemigo').transition('scale')
+        setTimeout(function(){
         actualizarValoresEnemigo()
+        }, 1700);
+        
+        $('.panel.enemigo .ui.card').transition('scale')
     }
 }
 
@@ -189,6 +197,9 @@ function actualizarValoresEnemigo ()
  */
 function siguienteEnemigo ()
 {
+    // Toma al primer enemigo de la lista en orden, falta crear lista independiente
+    // con enemigos aleatorios, de otra manera los enemigos que reaparecen tienen
+    // vida = 0 y eso genera recursividad
     if(enemigos.length > 0){
         let enemigo = enemigos.shift()
         console.log(enemigo)

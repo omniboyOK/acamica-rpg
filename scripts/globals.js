@@ -30,7 +30,7 @@ const libro = [
         id : 1,
         nombre: "atacar",
         accion : function atacar(objetivo){
-            $('.panel.enemigo').transition('shake')
+            $('.panel.enemigo .ui.card').transition('shake')
             const danioEfectuado = (jugador.personaje.estadisticas.ataque * 2) - objetivo.estadisticas.defensa
             registrar(`has hecho ${danioEfectuado} de daño`)
             objetivo.estadisticas.vida = objetivo.estadisticas.vida - danioEfectuado
@@ -87,7 +87,8 @@ const personajes = [
             maxVida: 600,
             vida: 600,
             maxMana: 1000,
-            mana: 1000
+            mana: 1000,
+            portrait: "img/heroes/guerrero.png"
         },
         [
             1,
@@ -104,7 +105,8 @@ const personajes = [
             maxVida: 400,
             vida: 400,
             maxMana: 2500,
-            mana: 2500
+            mana: 2500,
+            portrait: "img/heroes/mago.png"
         },
         [
             1,
@@ -116,41 +118,45 @@ const personajes = [
 ]
 
 const enemigos = [
-    new Personaje('Ogro', {
+    new Personaje('Orco', {
         ataque: 20,
         defensa: 30,
         maxVida: 250,
         vida: 250,
         maxMana: 750,
-        mana: 750
+        mana: 750,
+        portrait: "img/enemigos/orco.png"
     },
     [],
      true),
-    new Personaje('Dragon', {
+    new Personaje('Slime', {
         ataque: 10,
         defensa: 20,
         maxVida: 500,
         vida: 500,
         maxMana: 100,
-        mana: 100
+        mana: 100,
+        portrait: "img/enemigos/slime.png"
     },
     [], true),
-    new Personaje('Lagarto', {
+    new Personaje('Demonio', {
         ataque: 10,
         defensa: 10,
         maxVida: 800,
         vida: 800,
         maxMana: 250,
-        mana: 250
+        mana: 250,
+        portrait: "img/enemigos/demonio.png"
     },
     [], true),
-    new Personaje('Lagarto', {
+    new Personaje('Esqueleto', {
         ataque: 10,
         defensa: 10,
         maxVida: 800,
         vida: 800,
         maxMana: 250,
-        mana: 250
+        mana: 250,
+        portrait: "img/enemigos/esqueleto.png"
     },
     [], true)
 ]
