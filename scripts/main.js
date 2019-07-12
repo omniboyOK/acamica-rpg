@@ -191,11 +191,12 @@ function actualizarValoresJugador() {
       jugador.personaje.estadisticas.maxVida
   })
 } else {
+    menu.transition()
     $("#player_lifebar").progress({
         percent: 0
     })
-    $('#juego').fadeOut(1000)
-    $('#gameover').fadeIn(1000)
+    $('#juego').transition()
+    $('#gameover').transition()
 }
   $("#player_manabar").progress({
     percent:

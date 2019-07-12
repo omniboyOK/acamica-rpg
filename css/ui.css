@@ -23,11 +23,14 @@ body {
 }
 
 #gameover {
-    width: 50%;
-    height: 20%;
+    position: fixed;
+    padding: 2em;
     margin-right: auto;
     margin-left: auto;
     vertical-align: center;
+    text-align: center;
+    align-content: center;
+    visibility: hidden;
 }
 
 .ui.progress.mana .bar,

@@ -80,9 +80,9 @@ const libro = [
             jugador.personaje.estadisticas.vida -= danioEfectuado
             registrar(`${enemigoActual.tipo} ataca a ${jugador.nombre}`, false)
             registrar(`te ha hecho ${danioEfectuado} de daño`, false)
+            nextTurn()
             actualizarValoresEnemigo()
             actualizarValoresJugador()
-            nextTurn()
           }
           break
         case false: {
@@ -93,9 +93,9 @@ const libro = [
           enemigoActual.estadisticas.vida -= danioEfectuado
           registrar(`${jugador.nombre} ataca a ${enemigoActual.tipo}`)
           registrar(`has hecho ${danioEfectuado} de daño`)
+          nextTurn()
           actualizarValoresEnemigo()
           actualizarValoresJugador()
-          nextTurn()
         }
       }
     }
@@ -110,19 +110,18 @@ const libro = [
             $(".panel.enemigo .ui.card").transition("pulse")
             enemigoActual.estadisticas.defensa += 10
             registrar(`${enemigoActual.tipo} ha aumentado su defensa!`, false)
+            nextTurn()
             actualizarValoresEnemigo()
             actualizarValoresJugador()
-            nextTurn()
           }
           break
         case false: {
           $("#seccion-estadisticas .ui.card").transition("pulse")
-          const danioEfectuado = jugador.personaje.estadisticas.ataque * 2
           jugador.personaje.estadisticas.defensa += 10
           registrar(`${jugador.nombre} ha aumentado su defensa!`)
+          nextTurn()
           actualizarValoresEnemigo()
           actualizarValoresJugador()
-          nextTurn()
         }
       }
     }
@@ -146,9 +145,9 @@ const libro = [
                 false
               )
               registrar(`te ha hecho ${danioEfectuado} de daño`, false)
+              nextTurn()
               actualizarValoresEnemigo()
               actualizarValoresJugador()
-              nextTurn()
             } else {
               registrar(
                 `${
@@ -169,9 +168,9 @@ const libro = [
               `${jugador.nombre} ha lanzado fuego sobre ${enemigoActual.tipo}`
             )
             registrar(`has hecho ${danioEfectuado} de daño`)
+            nextTurn()
             actualizarValoresEnemigo()
             actualizarValoresJugador()
-            nextTurn()
           } else {
             registrar(`no tienes suficiente mana`)
           }
