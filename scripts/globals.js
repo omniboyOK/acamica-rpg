@@ -76,8 +76,8 @@ const libro = [
           {
             $("#seccion-estadisticas .ui.card").transition("shake");
             const danioEfectuado =
-              enemigoActual.estadisticas.ataque * 2 - hero.estadisticas.defensa;
-            hero.estadisticas.vida -= danioEfectuado;
+            enemigoActual.estadisticas.ataque * 2 - jugador.personaje.estadisticas.defensa;
+            jugador.personaje.estadisticas.vida -= danioEfectuado;
             registrar(`${enemigoActual.tipo} ataca a ${jugador.nombre}`, false);
             registrar(`te ha hecho ${danioEfectuado} de daño`, false);
             actualizarValoresEnemigo();
