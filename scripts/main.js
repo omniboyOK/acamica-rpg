@@ -4,8 +4,6 @@
  * @return {void}
  */
 var hero;
-const hero_panel = $("#seccion-estadisticas .ui.card");
-const enemy_panel = $(".panel.enemigo .ui.card");
 
 function iniciar() {
   menu.hide();
@@ -131,8 +129,6 @@ function seleccionarPersonaje(personaje) {
   // personaje seleccionado.
   jugador.nombre = window.elemNombreDeUsuario.value;
   jugador.personaje = personaje;
-  hero = jugador.personaje;
-  jugador.personaje.panel = hero_panel;
 
   registrar(`${jugador.nombre} jugara como ${jugador.personaje.tipo}`);
   // Despues de esto, se muestra la pantalla del juego.
@@ -247,7 +243,6 @@ function siguienteEnemigo() {
     let enemigo = enemigos.shift();
     console.log(enemigo);
     enemigoActual = enemigo;
-    enemigoActual.panel = enemy_panel;
     registrar(`El proximo enemigo es ${enemigo.tipo}`, false);
   } else {
     registrar(`No quedan más enemigos`, false);
