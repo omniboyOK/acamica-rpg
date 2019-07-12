@@ -1,135 +1,138 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <link rel="stylesheet" href="Semantic-UI-CSS-master/semantic.css">
-        <meta charset="utf-8">
-        <title>Acamica - DWFS - RPG Game</title>
-        <link rel="stylesheet" href="css/ui.css">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    </head>
-    <body>
-        <h1 id="titulo">Acamica RPG</h1>
-        <div class="ui vertical menu" id="habilidades-jugador">
 
+<head>
+    <link rel="stylesheet" href="Semantic-UI-CSS-master/semantic.css">
+    <meta charset="utf-8">
+    <title>Acamica - DWFS - RPG Game</title>
+    <link rel="stylesheet" href="css/ui.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <h1 id="titulo">Acamica RPG</h1>
+    <div class="ui vertical menu" id="habilidades-jugador">
+
+    </div>
+    <div class="ui segment" id="juego">
+        <div class="ui segment" id="overlay-seleccion-personaje">
+            <form class="ui input usuario" id="user-form">
+                <input type="text" placeholder="Ingresa tu nombre de usuario" id="nombre-de-usuario">
+                <div id="alert"></div>
+            </form>
+            <ul class="personajes" id="contenedor-personajes">
+                <!-- JS: Aca se van a imprimir los personajes definidos -->
+            </ul>
         </div>
-        <div class="ui segment" id="juego">
-            <div class="ui segment" id="overlay-seleccion-personaje">
-                <form class="ui input usuario" id="user-form">
-                    <input type="text" placeholder="Ingresa tu nombre de usuario" id="nombre-de-usuario">
-                    <div id="alert"></div>
-                </form>
-                <ul class="personajes" id="contenedor-personajes">
-                    <!-- JS: Aca se van a imprimir los personajes definidos -->
-                </ul>
-            </div>
-            <div class="panel">
-                <section class="seccion-estadisticas" id="seccion-estadisticas">
-                    <h2>Tu</h2>
-                    <div class="ui card">
-                        <div class="image" id="player_portrait">
-                            <img src="img/placeholder.png">
-                        </div>
-                            
-                        <div class="content">
-                            <strong>Nombre</strong>
-                            <span class="header" id="panel-nombre-usuario">{{username}}</span>
-                        </div>
+        <div class="panel">
+            <section class="seccion-estadisticas" id="seccion-estadisticas">
+                <h2>Tu</h2>
+                <div class="ui card">
+                    <div class="image" id="player_portrait">
+                        <img src="img/placeholder.png">
+                    </div>
+
+                    <div class="content">
+                        <strong>Nombre</strong>
+                        <span class="header" id="panel-nombre-usuario">{{username}}</span>
+                    </div>
+                    <ul class="fila-estadisticas">
+                        <li>
+                            <strong>Tipo</strong>
+                            <span id="panel-tipo-personaje">{{character_type}}</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Ataque</strong>
+                            <span id="estadistica-ataque">45</span>
+                        </li>
+                        <li>
+                            <strong>Defensa</strong>
+                            <span id="estadistica-defensa">20</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Vida</strong>
+                            <div class="ui indicating progress" id="player_lifebar">
+                                <div class="bar">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                            <span id="estadistica-vida"></span>
+                        </li>
+                        <li>
+                            <strong>Mana</strong>
+                            <div class="ui mana progress" id="player_manabar">
+                                <div class="bar">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                            <span id="estadistica-mana"></span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <ul id="juego-historial">
+
+        </ul>
+        <div class="panel enemigo">
+            <section class="seccion-estadisticas" id="seccion-estadisticas-enemigo">
+                <h2>Enemigo</h2>
+                <div class="ui card">
+                    <div class="image" id="enemy_portrait">
+                        <img src="img/placeholder.png">
+                    </div>
+                    <div class="content">
                         <ul class="fila-estadisticas">
                             <li>
                                 <strong>Tipo</strong>
-                                <span id="panel-tipo-personaje">{{character_type}}</span>
-                            </li>
-                        </ul>
-                        <ul class="columna-estadisticas">
-                            <li>
-                                <strong>Ataque</strong>
-                                <span id="estadistica-ataque">45</span>
-                            </li>
-                            <li>
-                                <strong>Defensa</strong>
-                                <span id="estadistica-defensa">20</span>
-                            </li>
-                        </ul>
-                        <ul class="columna-estadisticas">
-                            <li>
-                                <strong>Vida</strong>
-                                <div class="ui indicating progress" id="player_lifebar">
-                                    <div class="bar">
-                                        <div class="progress"></div>
-                                    </div>
-                                </div>
-                                <span id="estadistica-vida"></span>
-                            </li>
-                            <li>
-                                <strong>Mana</strong>
-                                <div class="ui mana progress" id="player_manabar">
-                                    <div class="bar">
-                                        <div class="progress"></div>
-                                    </div>
-                                </div>
-                                <span id="estadistica-mana"></span>
+                                <span id="enemigo-panel-tipo-personaje">{{character_type}}</span>
                             </li>
                         </ul>
                     </div>
-                </section>
-            </div>
-            <ul id="juego-historial">
 
-            </ul>
-            <div class="panel enemigo">
-                <section class="seccion-estadisticas" id="seccion-estadisticas-enemigo">
-                    <h2>Enemigo</h2>
-                    <div class="ui card">
-                        <div class="image" id="enemy_portrait">
-                            <img src="img/placeholder.png">
-                        </div>
-                        <div class="content">
-                            <ul class="fila-estadisticas">
-                                <li>
-                                    <strong>Tipo</strong>
-                                    <span id="enemigo-panel-tipo-personaje">{{character_type}}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <ul class="columna-estadisticas">
-                            <li>
-                                <strong>Ataque</strong>
-                                <span id="enemigo-estadistica-ataque">45</span>
-                            </li>
-                            <li>
-                                <strong>Defensa</strong>
-                                <span id="enemigo-estadistica-defensa">20</span>
-                            </li>
-                        </ul>
-                        <ul class="columna-estadisticas">
-                            <li>
-                                <strong>Vida</strong>
-                                <div class="ui indicating progress" id="enemy_lifebar">
-                                    <div class="bar">
-                                        <div class="progress"></div>
-                                    </div>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Ataque</strong>
+                            <span id="enemigo-estadistica-ataque">45</span>
+                        </li>
+                        <li>
+                            <strong>Defensa</strong>
+                            <span id="enemigo-estadistica-defensa">20</span>
+                        </li>
+                    </ul>
+                    <ul class="columna-estadisticas">
+                        <li>
+                            <strong>Vida</strong>
+                            <div class="ui indicating progress" id="enemy_lifebar">
+                                <div class="bar">
+                                    <div class="progress"></div>
                                 </div>
-                                <span id="enemigo-estadistica-vida"></span>
-                            </li>
-                            <li>
-                                <strong>Mana</strong>
-                                <div class="ui mana progress" id="enemy_manabar">
-                                    <div class="bar">
-                                        <div class="progress"></div>
-                                    </div>
+                            </div>
+                            <span id="enemigo-estadistica-vida"></span>
+                        </li>
+                        <li>
+                            <strong>Mana</strong>
+                            <div class="ui mana progress" id="enemy_manabar">
+                                <div class="bar">
+                                    <div class="progress"></div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                </section>
-            </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
         </div>
+    </div>
 
-        <!-- Este archivo contiene las variables globales -->
-        <script src="./scripts/globals.js"></script>
-        <script src="./scripts/main.js"></script>
-        <script src="Semantic-UI-CSS-master/semantic.js"></script>
-    </body>
+    <!-- Este archivo contiene las variables globales -->
+    <script src="./scripts/globals.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.js"></script>
+</body>
+
 </html>

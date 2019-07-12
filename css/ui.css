@@ -1,209 +1,214 @@
 @keyframes brillar {
-    0% { box-shadow: 0px 4px 15px gold; }
-    50% { box-shadow: 0px 8px 30px rgb(69, 66, 35); }
-    100% { box-shadow: 0px 4px 15px gold; }
+  0% {
+    box-shadow: 0px 4px 15px gold;
+  }
+  50% {
+    box-shadow: 0px 8px 30px rgb(69, 66, 35);
+  }
+  100% {
+    box-shadow: 0px 4px 15px gold;
+  }
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background-color: #63707e;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #63707e;
+  overflow: hidden;
 }
 
 .ui.progress.mana .bar,
 .ui.progress.mana.success .bar {
-    background-color: blue !important;
+  background-color: blue !important;
 }
 
 .ui.card {
-    
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #titulo {
-    /* color: gold; */
-    color: white;
-    margin: 0;
-    position: absolute;
-    top: 15px;
-    left: 15px;
+  /* color: gold; */
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
 
 #juego {
-    height: 700px;
-    width: 1100px;
-    position: relative;
-    background-color: #f2f6f5;
-    /* border: 2px solid gold;
+  height: 700px;
+  width: 1100px;
+  position: relative;
+  background-color: #f2f6f5;
+  /* border: 2px solid gold;
     animation: brillar 5s ease-in-out infinite; */
 }
 
 #juego .panel {
-    width: 280px;
-    height: 100%;
-    border-right: 1px solid #ccc;
-    padding: 10px;
-    display: block;
-    float: left;
+  width: 280px;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  display: block;
+  float: left;
 }
 
 #juego-historial {
-    width: calc(100% - 280px * 2);
-    height: 100%;
-    float: left;
-    overflow: scroll;
+  width: calc(100% - 280px * 2);
+  height: 100%;
+  float: left;
+  overflow: scroll;
 }
 
 #juego .panel.enemigo {
-    float: left;
-    border-right: none;
-    border-left: 1px solid #ccc;
+  float: left;
+  border-right: none;
+  border-left: 1px solid #ccc;
 }
 
 #juego .panel section {
-    float: left;
-    width: 100%;
-    margin-bottom: 20px;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 #juego .panel h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    padding: 0;
-    color: #63707e;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  color: #63707e;
 }
 
 .seccion-estadisticas .fila-estadisticas li,
 .seccion-estadisticas .columna-estadisticas li,
 .seccion-estadisticas .panel-tipo-personaje li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .seccion-estadisticas .fila-estadisticas,
 .seccion-estadisticas .columna-estadisticas,
 .seccion-estadisticas .panel-tipo-personaje {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .seccion-estadisticas .columna-estadisticas {
-    width: 50%;
+  width: 50%;
 }
 
 .seccion-estadisticas .fila-estadisticas {
-    width: 100%;
+  width: 100%;
 }
 
 .seccion-estadisticas .fila-estadisticas span,
 .seccion-estadisticas .fila-estadisticas strong {
-    width: 100%;
-    display: inline-block;
-    text-align: center;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
 }
 
 .seccion-estadisticas .columna-estadisticas span,
-.seccion-estadisticas .columna-estadisticas strong{
-    width: 100%;
-    display: inline-block;
-    text-align: center;
+.seccion-estadisticas .columna-estadisticas strong {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
 }
 
 #habilidades-jugador {
-    position: fixed;
-    left: 10px;
-    top: 25%;
-    z-index: 3;
-    visibility: hidden;
+  position: fixed;
+  left: 10px;
+  top: 25%;
+  z-index: 3;
+  visibility: hidden;
 }
 
 .ui.progress {
-    margin: 0;
+  margin: 0;
 }
 
 .ui a {
-    min-height: 50px;
+  min-height: 50px;
 }
 
 #overlay-seleccion-personaje {
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    border: none;
-    background-color: #f2f6f5;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: none;
+  background-color: #f2f6f5;
 }
 
 #overlay-seleccion-personaje.oculto {
-    display: none;
+  display: none;
 }
 
 #overlay-seleccion-personaje .usuario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 10%;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10%;
+  padding: 0;
 }
 
 #overlay-seleccion-personaje .personajes {
-    height: 70%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 #overlay-seleccion-personaje .personajes .personaje {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 1px 2px rgba(0,0,0,.1);
-    margin: 0 10px;
-    padding: 2em;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+  padding: 2em;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 #overlay-seleccion-personaje .personajes .personaje span {
-    font-size: 10pt;
+  font-size: 10pt;
 }
 
 #overlay-seleccion-personaje .personajes .personaje strong {
-    padding-top: 1em;
+  padding-top: 1em;
 }
 
 #overlay-seleccion-personaje .personajes .personaje:hover {
-    box-shadow: 0px 2px 10px rgba(0,0,0,.2);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 #user-form {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#user-form input{
-    width: 100%;
+#user-form input {
+  width: 100%;
 }
 
 #user-form #alert {
-    position: absolute;
-    top: 3em;
-    width: 100%
+  position: absolute;
+  top: 3em;
+  width: 100%;
 }
