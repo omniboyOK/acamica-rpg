@@ -22,6 +22,14 @@ body {
   overflow: hidden;
 }
 
+#gameover {
+    width: 50%;
+    height: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    vertical-align: center;
+}
+
 .ui.progress.mana .bar,
 .ui.progress.mana.success .bar {
   background-color: blue !important;

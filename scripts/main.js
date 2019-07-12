@@ -3,12 +3,13 @@
  * Dispara otras funciones.
  * @return {void}
  */
-var hero;
+var hero
 
 function iniciar() {
-  menu.hide();
-  inicializarElementos();
-  mostrarSeleccionPersonaje();
+  menu.hide()
+  $('#gameover').hide()
+  inicializarElementos()
+  mostrarSeleccionPersonaje()
 }
 
 /**
@@ -21,54 +22,54 @@ function inicializarElementos() {
   // Estos elementos corresponden a la pantalla de seleccion de personaje
   window.elemPantallaSeleccion = document.getElementById(
     "overlay-seleccion-personaje"
-  );
+  )
   window.elemContenedorPersonajes = document.getElementById(
     "contenedor-personajes"
-  );
-  window.elemNombreDeUsuario = document.getElementById("nombre-de-usuario");
+  )
+  window.elemNombreDeUsuario = document.getElementById("nombre-de-usuario")
 
   // Estos corresponden al panel del jugador
   window.elemJugadorNombreUsuario = document.getElementById(
     "panel-nombre-usuario"
-  );
+  )
   window.elemJugadorTipoPersonaje = document.getElementById(
     "panel-tipo-personaje"
-  );
+  )
   window.elemJugadorEstadisticaAtaque = document.getElementById(
     "estadistica-ataque"
-  );
+  )
   window.elemJugadorEstadisticaDefensa = document.getElementById(
     "estadistica-defensa"
-  );
+  )
   window.elemJugadorEstadisticaVida = document.getElementById(
     "estadistica-vida"
-  );
+  )
   window.elemJugadorEstadisticaMana = document.getElementById(
     "estadistica-mana"
-  );
+  )
   window.elemJugadorHabilidades = document.getElementById(
     "habilidades-jugador"
-  );
+  )
 
   // Estos corresponden al panel del enemigo
   window.elemEnemigoTipoPersonaje = document.getElementById(
     "enemigo-panel-tipo-personaje"
-  );
+  )
   window.elemEnemigoEstadisticaAtaque = document.getElementById(
     "enemigo-estadistica-ataque"
-  );
+  )
   window.elemEnemigoEstadisticaDefensa = document.getElementById(
     "enemigo-estadistica-defensa"
-  );
+  )
   window.elemEnemigoEstadisticaVida = document.getElementById(
     "enemigo-estadistica-vida"
-  );
+  )
   window.elemEnemigoEstadisticaMana = document.getElementById(
     "enemigo-estadistica-mana"
-  );
+  )
 
   // Estos corresponden al juego en general
-  window.elemHistorial = document.getElementById("juego-historial");
+  window.elemHistorial = document.getElementById("juego-historial")
 }
 
 /**
@@ -80,24 +81,24 @@ function mostrarSeleccionPersonaje() {
   // Recorremos el array que contiene los personajes definidos.
   personajes.forEach(function(personaje) {
     // Creamos un elemento 'li'
-    let contenedorPersonaje = document.createElement("li");
+    let contenedorPersonaje = document.createElement("li")
 
     // Le agregamos la clase 'personaje'
-    contenedorPersonaje.classList.add("personaje", "ui", "button");
+    contenedorPersonaje.classList.add("personaje", "ui", "button")
 
     // Le agregamos el HTML correspondiente
     contenedorPersonaje.innerHTML = `
             <span>Jugar como</span>
-            <strong>${personaje.tipo}</strong>`;
+            <strong>${personaje.tipo}</strong>`
 
     // Agregamos una escucha de evento para cuando se seleccione el personaje
     contenedorPersonaje.addEventListener("click", function() {
-      seleccionarPersonaje(personaje);
-    });
+      seleccionarPersonaje(personaje)
+    })
 
     // Insertamos el elemento, dentro del contenedor de personajes
-    window.elemContenedorPersonajes.appendChild(contenedorPersonaje);
-  });
+    window.elemContenedorPersonajes.appendChild(contenedorPersonaje)
+  })
 }
 
 /**
@@ -106,7 +107,7 @@ function mostrarSeleccionPersonaje() {
  * @return {void}
  */
 function seleccionarPersonaje(personaje) {
-  let alert = $("#alert");
+  let alert = $("#alert")
   // Si no se ingreso un nombre de usuario,
   // mostrar una alerta y volver.
   if (!window.elemNombreDeUsuario.value) {
@@ -118,21 +119,21 @@ function seleccionarPersonaje(personaje) {
             Debes ingresar un nombre para tu personaje!
         </div>`
       )
-      .show();
-    alert.fadeOut(3000);
-    return false;
+      .show()
+    alert.fadeOut(3000)
+    return false
   }
 
   // Si se ingreso, se guarda en la propiedad
   // nombre del objeto 'jugador'. Y en la propiedad
   // 'personaje' del mismo objeto, se guarda el
   // personaje seleccionado.
-  jugador.nombre = window.elemNombreDeUsuario.value;
-  jugador.personaje = personaje;
+  jugador.nombre = window.elemNombreDeUsuario.value
+  jugador.personaje = personaje
 
-  registrar(`${jugador.nombre} jugara como ${jugador.personaje.tipo}`);
+  registrar(`${jugador.nombre} jugara como ${jugador.personaje.tipo}`)
   // Despues de esto, se muestra la pantalla del juego.
-  mostrarPantallaJuego();
+  mostrarPantallaJuego()
 }
 
 /**
@@ -141,93 +142,101 @@ function seleccionarPersonaje(personaje) {
  * @return {void}
  */
 function mostrarPantallaJuego() {
-  nextTurn();
+  nextTurn()
   // Mostramos el menu de habilidades
-  menu.css("visibility", "visible");
+  menu.css("visibility", "visible")
   // Ocultamos la pantalla de seleccion de personaje
-  $("#overlay-seleccion-personaje").transition("scale");
+  $("#overlay-seleccion-personaje").transition("scale")
 
   // Selecciona el proximo enemigo
-  siguienteEnemigo();
+  siguienteEnemigo()
 
   // Mostramos los datos del persoaje
-  actualizarValoresJugador();
-  actualizarHabilidadesJugador();
+  actualizarValoresJugador()
+  actualizarHabilidadesJugador()
 
   // Mostramos los datos del enemigo
-  actualizarValoresEnemigo();
+  actualizarValoresEnemigo()
 }
 
 function actualizarHabilidadesJugador() {
   // Agregamos habilidades del personaje
   jugador.personaje.habilidades.forEach(function(value, index) {
-    let action = jugador.personaje.habilidades[index].accion;
-    let boton = document.createElement("a");
-    boton.classList.add("ui", "teal", "item");
+    let action = jugador.personaje.habilidades[index].accion
+    let boton = document.createElement("a")
+    boton.classList.add("ui", "teal", "item")
     boton.addEventListener("click", function() {
-      action();
-    });
-    boton.innerHTML = jugador.personaje.habilidades[index].nombre;
-    window.elemJugadorHabilidades.appendChild(boton);
-  });
+      action()
+    })
+    boton.innerHTML = jugador.personaje.habilidades[index].nombre
+    window.elemJugadorHabilidades.appendChild(boton)
+  })
 }
 
 function actualizarValoresJugador() {
   $("#player_portrait")
     .children()
-    .attr("src", jugador.personaje.estadisticas.portrait);
-  window.elemJugadorNombreUsuario.innerHTML = jugador.nombre;
-  window.elemJugadorTipoPersonaje.innerHTML = jugador.personaje.tipo;
+    .attr("src", jugador.personaje.estadisticas.portrait)
+  window.elemJugadorNombreUsuario.innerHTML = jugador.nombre
+  window.elemJugadorTipoPersonaje.innerHTML = jugador.personaje.tipo
   window.elemJugadorEstadisticaAtaque.innerHTML =
-    jugador.personaje.estadisticas.ataque;
+    jugador.personaje.estadisticas.ataque
   window.elemJugadorEstadisticaDefensa.innerHTML =
-    jugador.personaje.estadisticas.defensa;
+    jugador.personaje.estadisticas.defensa
   // Con Progress de semantic podemos actualizar una barra de vida o mana
-  $("#player_lifebar").progress({
+  if(jugador.personaje.estadisticas.vida > 0){
+      $("#player_lifebar").progress({
     percent:
       (jugador.personaje.estadisticas.vida * 100) /
       jugador.personaje.estadisticas.maxVida
-  });
+  })
+} else {
+    $("#player_lifebar").progress({
+        percent: 0
+    })
+    $('#juego').fadeOut(1000)
+    $('#gameover').fadeIn(1000)
+}
   $("#player_manabar").progress({
     percent:
       (jugador.personaje.estadisticas.mana * 100) /
       jugador.personaje.estadisticas.maxMana
-  });
+  })
 }
 
 function actualizarValoresEnemigo() {
   $("#enemy_portrait")
     .children()
-    .attr("src", enemigoActual.estadisticas.portrait);
-  window.elemEnemigoTipoPersonaje.innerHTML = enemigoActual.tipo;
+    .attr("src", enemigoActual.estadisticas.portrait)
+  window.elemEnemigoTipoPersonaje.innerHTML = enemigoActual.tipo
   window.elemEnemigoEstadisticaAtaque.innerHTML =
-    enemigoActual.estadisticas.ataque;
+    enemigoActual.estadisticas.ataque
   window.elemEnemigoEstadisticaDefensa.innerHTML =
-    enemigoActual.estadisticas.defensa;
+    enemigoActual.estadisticas.defensa
   // Con Progress de semantic podemos actualizar una barra de vida o mana
   $("#enemy_manabar").progress({
     percent:
       (enemigoActual.estadisticas.mana * 100) /
       enemigoActual.estadisticas.maxMana
-  });
+  })
   // Si el enemigo muere, lo descartamos y pasamos al siguiente
   if (enemigoActual.estadisticas.vida <= 0) {
     $("#enemy_lifebar").progress({
       percent: 0
-    });
-    $(".panel.enemigo .ui.card").transition("scale", 1000);
-    siguienteEnemigo();
+    })
+    $(".panel.enemigo .ui.card").transition("scale", 1000)
+    siguienteEnemigo()
     setTimeout(function() {
-      actualizarValoresEnemigo();
-    }, 1700);
+      actualizarValoresEnemigo()
+    }, 1700)
 
-    $(".panel.enemigo .ui.card").transition("scale");
+    $(".panel.enemigo .ui.card").transition("scale")
   } else {
     $("#enemy_lifebar").progress({
       percent:
         (enemigoActual.estadisticas.vida * 100) /
         enemigoActual.estadisticas.maxVida
-    });
+    })
   }
 }
 
@@ -240,12 +249,12 @@ function siguienteEnemigo() {
   // con enemigos aleatorios, de otra manera los enemigos que reaparecen tienen
   // vida = 0 y eso genera recursividad
   if (enemigos.length > 0) {
-    let enemigo = enemigos.shift();
-    console.log(enemigo);
-    enemigoActual = enemigo;
-    registrar(`El proximo enemigo es ${enemigo.tipo}`, false);
+    let enemigo = enemigos.shift()
+    console.log(enemigo)
+    enemigoActual = enemigo
+    registrar(`El proximo enemigo es ${enemigo.tipo}`, false)
   } else {
-    registrar(`No quedan más enemigos`, false);
+    registrar(`No quedan más enemigos`, false)
   }
 }
 
@@ -253,30 +262,30 @@ function siguienteEnemigo() {
  * Agrega un registro al historial
  */
 function registrar(evento, jugador = true) {
-  let d = new Date();
+  let d = new Date()
   let h = d
     .getHours()
     .toString()
-    .padStart(2, "0");
+    .padStart(2, "0")
   let m = d
     .getMinutes()
     .toString()
-    .padStart(2, "0");
+    .padStart(2, "0")
   let s = d
     .getSeconds()
     .toString()
-    .padStart(2, "0");
-  let hora = "[" + h + ":" + m + ":" + s + "]";
-  let registro = document.createElement("li");
+    .padStart(2, "0")
+  let hora = "[" + h + ":" + m + ":" + s + "]"
+  let registro = document.createElement("li")
   // Si es true el color es azul si es false es rojo
-  registro.style.color = jugador ? "#614ad3" : "#e42c64";
-  registro.innerHTML = hora + " " + evento;
-  window.elemHistorial.appendChild(registro);
-  scrollLog();
+  registro.style.color = jugador ? "#614ad3" : "#e42c64"
+  registro.innerHTML = hora + " " + evento
+  window.elemHistorial.appendChild(registro)
+  scrollLog()
 }
 
 // Agregamos un listener, que escucha el evento
 // 'DOMContentLoaded'. Se ejecuta cuando el DOM
 // se cargo completamente. En este caso, ejecuta
 // la funcion 'iniciar'
-document.addEventListener("DOMContentLoaded", iniciar);
+document.addEventListener("DOMContentLoaded", iniciar)
