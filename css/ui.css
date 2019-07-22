@@ -241,3 +241,8 @@ img {
   top: 3em;
   width: 100%;
 }
+
+#inventario_caja {
+  width: 550px;
+  height: 350px;
+}
