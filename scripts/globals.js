@@ -23,13 +23,22 @@ function swapTurn() {
   turnoJugador = !turnoJugador
 }
 
+function disableMenu() {
+  $('#habilidades-jugador a').addClass('disabled').click(false)
+}
+
+function enableMenu() {
+  $('#habilidades-jugador a').removeClass('disabled').click(true)
+}
+
+/* Esta funcion cambia los turnos */
 function nextTurn() {
   if (turnoJugador) {
     menu.transition("fly right")
     //enableMenu()
     swapTurn()
   } else {
-    //disableMenu()
+    disableMenu()
     menu.transition("fly right")
     swapTurn()
     setTimeout(function() {
@@ -201,7 +210,7 @@ function Personaje(tipo, estadisticas, habilidades, enemigo = false) {
 const personajes = [
   new Personaje(
     "Guerrero",
-    {
+    estadisticas = {
       ataque: 60,
       defensa: 50,
       maxVida: 600,
@@ -214,7 +223,7 @@ const personajes = [
   ),
   new Personaje(
     "Mago",
-    {
+    estadisticas = {
       ataque: 30,
       defensa: 20,
       maxVida: 400,
@@ -224,13 +233,78 @@ const personajes = [
       portrait: "img/heroes/mago.png"
     },
     [1, 3, 0, 0]
+  ),
+  new Personaje(
+    "Asesino",
+    estadisticas = {
+      ataque: 70,
+      defensa: 30,
+      maxVida: 500,
+      vida: 500,
+      maxMana: 500,
+      mana: 500,
+      portrait: "img/heroes/Actor1-3.png"
+    },
+    [1, 2, 0, 0]
+  ),
+  new Personaje(
+    "Sacerdota",
+    estadisticas = {
+      ataque: 40,
+      defensa: 30,
+      maxVida: 500,
+      vida: 500,
+      maxMana: 1500,
+      mana: 1500,
+      portrait: "img/heroes/Actor3-4.png"
+    },
+    [1, 2, 0, 0]
+  ),
+  new Personaje(
+    "Guerrera",
+    estadisticas = {
+      ataque: 60,
+      defensa: 50,
+      maxVida: 600,
+      vida: 600,
+      maxMana: 1000,
+      mana: 1000,
+      portrait: "img/heroes/Actor1-2.png"
+    },
+    [1, 2, 0, 0]
+  ),
+  new Personaje(
+    "Asesino",
+    estadisticas = {
+      ataque: 70,
+      defensa: 30,
+      maxVida: 500,
+      vida: 500,
+      maxMana: 500,
+      mana: 500,
+      portrait: "img/heroes/Actor1-3.png"
+    },
+    [1, 2, 0, 0]
+  ),
+  new Personaje(
+    "Sacerdota",
+    estadisticas = {
+      ataque: 40,
+      defensa: 30,
+      maxVida: 500,
+      vida: 500,
+      maxMana: 1500,
+      mana: 1500,
+      portrait: "img/heroes/Actor3-4.png"
+    },
+    [1, 2, 0, 0]
   )
 ]
 
 const enemigos = [
   new Personaje(
     "Orco",
-    {
+    estadisticas = {
       ataque: 50,
       defensa: 30,
       maxVida: 250,
@@ -244,7 +318,7 @@ const enemigos = [
   ),
   new Personaje(
     "Slime",
-    {
+    estadisticas = {
       ataque: 70,
       defensa: 20,
       maxVida: 200,
@@ -258,7 +332,7 @@ const enemigos = [
   ),
   new Personaje(
     "Demonio",
-    {
+    estadisticas = {
       ataque: 150,
       defensa: 80,
       maxVida: 400,
@@ -272,7 +346,7 @@ const enemigos = [
   ),
   new Personaje(
     "Esqueleto",
-    {
+    estadisticas = {
       ataque: 100,
       defensa: 20,
       maxVida: 600,

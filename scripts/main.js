@@ -3,11 +3,9 @@
  * Dispara otras funciones.
  * @return {void}
  */
-var hero
 
 function iniciar() {
   menu.hide()
-  $('#gameover').hide()
   inicializarElementos()
   mostrarSeleccionPersonaje()
 }
@@ -79,16 +77,19 @@ function inicializarElementos() {
  */
 function mostrarSeleccionPersonaje() {
   // Recorremos el array que contiene los personajes definidos.
-  personajes.forEach(function(personaje) {
+  personajes.forEach(function(personaje, index) {
     // Creamos un elemento 'li'
     let contenedorPersonaje = document.createElement("li")
 
     // Le agregamos la clase 'personaje'
-    contenedorPersonaje.classList.add("personaje", "ui", "button")
+    contenedorPersonaje.classList.add("personaje", "ui", "card")
 
     // Le agregamos el HTML correspondiente
     contenedorPersonaje.innerHTML = `
             <span>Jugar como</span>
+            <div class="ui image fluid">
+            <img src=${personaje.estadisticas.portrait}>
+            </div>
             <strong>${personaje.tipo}</strong>`
 
     // Agregamos una escucha de evento para cuando se seleccione el personaje
@@ -165,7 +166,7 @@ function actualizarHabilidadesJugador() {
     let action = jugador.personaje.habilidades[index].accion
     let boton = document.createElement("a")
     boton.classList.add("ui", "teal", "item")
-    boton.addEventListener("click", function() {
+    $(boton).click(() => {
       action()
     })
     boton.innerHTML = jugador.personaje.habilidades[index].nombre
@@ -196,7 +197,7 @@ function actualizarValoresJugador() {
         percent: 0
     })
     $('#juego').transition()
-    $('#gameover').transition()
+    $('#gameover').modal('show')
 }
   $("#player_manabar").progress({
     percent:

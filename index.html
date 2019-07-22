@@ -28,7 +28,7 @@
             <section class="seccion-estadisticas" id="seccion-estadisticas">
                 <h2>Tu</h2>
                 <div class="ui card">
-                    <div class="image" id="player_portrait">
+                    <div class="ui image fluid" id="player_portrait">
                         <img src="img/placeholder.png">
                     </div>
 
@@ -75,14 +75,19 @@
                 </div>
             </section>
         </div>
-        <ul id="juego-historial">
+        <div id="panel-historial">
+            <ul id="juego-historial">
 
-        </ul>
+            </ul>
+            <div id="juego-mapa">
+                <img src="img/grid.png" alt="" id="map-grid">
+            </div>
+        </div>
         <div class="panel enemigo">
             <section class="seccion-estadisticas" id="seccion-estadisticas-enemigo">
                 <h2>Enemigo</h2>
                 <div class="ui card">
-                    <div class="image" id="enemy_portrait">
+                    <div class="ui image fluid" id="enemy_portrait">
                         <img src="img/placeholder.png">
                     </div>
                     <div class="content">
@@ -128,9 +133,12 @@
             </section>
         </div>
     </div>
-    <div class="ui center aligned inverted segment red" id="gameover">
+    <div class="ui modal" id="gameover">
         <h3>GAME OVER</h3>
-        <button class="ui button inverted white" type="button" onclick="location.reload(true)">Volver a jugar</button>
+        <div class="ui green ok inverted button" onclick="location.reload(true)">
+            <i class="checkmark icon"></i>
+            Volver a jugar
+        </div>
     </div>
     <!-- Este archivo contiene las variables globales -->
     <script src="./scripts/globals.js"></script>

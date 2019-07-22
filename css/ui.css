@@ -22,6 +22,14 @@ body {
   overflow: hidden;
 }
 
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  }
+
 #gameover {
     position: fixed;
     padding: 2em;
@@ -71,11 +79,21 @@ body {
   float: left;
 }
 
-#juego-historial {
+#panel-historial {
   width: calc(100% - 280px * 2);
   height: 100%;
   float: left;
+  overflow: hidden;
+}
+
+#juego-historial {
+  height: 50%;
   overflow: scroll;
+}
+
+#juego-mapa {
+  height: 50%;
+  overflow: hidden;
 }
 
 #juego .panel.enemigo {
