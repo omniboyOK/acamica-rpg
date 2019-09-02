@@ -38,7 +38,7 @@ function nextTurn() {
     //enableMenu()
     swapTurn()
   } else {
-    disableMenu()
+    //disableMenu()
     menu.transition("fly right")
     swapTurn()
     setTimeout(function() {
