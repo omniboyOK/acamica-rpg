@@ -83,10 +83,13 @@ img {
 #juego {
   height: 100%;
   width: 1100px;
+  min-width: 800px;
   position: relative;
   background-color: #f2f6f5;
   margin: 0;
   box-shadow: 0px 4px 15px black;
+  
+  overflow: hidden;
 }
 
 #juego .panel {
@@ -171,11 +174,14 @@ img {
 }
 
 #habilidades-jugador {
-  position: fixed;
-  left: 10px;
-  top: 25%;
+  position: absolute;
+  bottom: 25px;
   z-index: 3;
   visibility: hidden;
+}
+
+#habilidades-jugador .item{
+  border: 1px solid grey;
 }
 
 .ui.progress {

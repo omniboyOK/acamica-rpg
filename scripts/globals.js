@@ -23,21 +23,13 @@ function swapTurn() {
   turnoJugador = !turnoJugador
 }
 
-function disableMenu() {
-  $('#habilidades-jugador a').addClass('disabled').click(false)
-}
-
-function enableMenu() {
-  $('#habilidades-jugador a').removeClass('disabled').click(true)
-}
-
 /* Esta funcion cambia los turnos */
 function nextTurn() {
   if (turnoJugador) {
-    menu.transition("fly right")
+    menu.transition("fly up")
     swapTurn()
   } else {
-    menu.transition("fly right")
+    menu.transition("fly up")
     swapTurn()
     setTimeout(function() {
       enemigoActual.habilidades[Math.floor(Math.random() * 2)].accion()
