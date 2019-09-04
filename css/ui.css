@@ -10,6 +10,24 @@
   }
 }
 
+@-webkit-keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1024px 0;
+  }
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -81px 0;
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -17,9 +35,10 @@ body {
   justify-content: center;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  background-color: #63707e;
+  height: 100%;
+  background-image: url(../img/back.png);
   overflow: hidden;
+  animation: slide 10s linear infinite;
 }
 
 img {
@@ -28,17 +47,17 @@ img {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-  }
+}
 
 #gameover {
-    position: fixed;
-    padding: 2em;
-    margin-right: auto;
-    margin-left: auto;
-    vertical-align: center;
-    text-align: center;
-    align-content: center;
-    visibility: hidden;
+  position: fixed;
+  padding: 2em;
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: center;
+  text-align: center;
+  align-content: center;
+  visibility: hidden;
 }
 
 .ui.progress.mana .bar,
@@ -62,12 +81,12 @@ img {
 }
 
 #juego {
-  height: 700px;
+  height: 100%;
   width: 1100px;
   position: relative;
   background-color: #f2f6f5;
-  /* border: 2px solid gold;
-    animation: brillar 5s ease-in-out infinite; */
+  margin: 0;
+  box-shadow: 0px 4px 15px black;
 }
 
 #juego .panel {

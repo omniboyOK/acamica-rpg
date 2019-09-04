@@ -1,3 +1,21 @@
+// Creamos el objeto personalizado 'Personaje'.
+// Este va a tener las propiedades que corresponden,
+// y los metodos, como 'atacar', etc.
+class Personaje{
+  constructor(tipo, estadisticas, habilidades, enemigo = false){
+    this.tipo = tipo
+    this.estadisticas = estadisticas
+    this.esEnemigo = enemigo
+    this.habilidades = [
+      libro[habilidades[0]],
+      libro[habilidades[1]],
+      libro[habilidades[2]],
+      libro[habilidades[3]]
+    ]
+  }
+  
+}
+
 // Creamos la constante que contiene los personajes. Es un
 // array que contiene n objetos. Cada uno, es un personaje
 // que el jugador puede elegir para jugar.
@@ -95,17 +113,3 @@ const personajes = [
     )
   ]
 
-// Creamos el objeto personalizado 'Personaje'.
-// Este va a tener las propiedades que corresponden,
-// y los metodos, como 'atacar', etc.
-function Personaje(tipo, estadisticas, habilidades, enemigo = false) {
-    this.tipo = tipo
-    this.estadisticas = estadisticas
-    this.esEnemigo = enemigo
-    this.habilidades = [
-      libro[habilidades[0]],
-      libro[habilidades[1]],
-      libro[habilidades[2]],
-      libro[habilidades[3]]
-    ]
-  }

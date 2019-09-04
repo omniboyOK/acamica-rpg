@@ -35,10 +35,8 @@ function enableMenu() {
 function nextTurn() {
   if (turnoJugador) {
     menu.transition("fly right")
-    //enableMenu()
     swapTurn()
   } else {
-    //disableMenu()
     menu.transition("fly right")
     swapTurn()
     setTimeout(function() {
