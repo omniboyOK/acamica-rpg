@@ -226,13 +226,13 @@ function actualizarValoresEnemigo() {
     $("#enemy_lifebar").progress({
       percent: 0
     })
-    $(".panel.enemigo .ui.card").transition("scale", 1000)
-    siguienteEnemigo()
+    $(".panel.enemigo .ui.card").transition("horizontal flip", 1000)
     setTimeout(function() {
       actualizarValoresEnemigo()
     }, 1700)
 
-    $(".panel.enemigo .ui.card").transition("scale")
+    siguienteEnemigo()
+    $(".panel.enemigo .ui.card").transition("horizontal flip")
   } else {
     $("#enemy_lifebar").progress({
       percent:
