@@ -16,7 +16,7 @@ const enemigos = [
     new Personaje(
       "Slime",
       estadisticas = {
-        ataque: 70,
+        ataque: 50,
         defensa: 20,
         maxVida: 200,
         vida: 200,
@@ -30,7 +30,7 @@ const enemigos = [
     new Personaje(
       "Demonio",
       estadisticas = {
-        ataque: 150,
+        ataque: 50,
         defensa: 80,
         maxVida: 400,
         vida: 400,

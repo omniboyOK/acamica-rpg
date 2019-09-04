@@ -2,18 +2,32 @@
 // Este va a tener las propiedades que corresponden,
 // y los metodos, como 'atacar', etc.
 class Personaje{
-  constructor(tipo, estadisticas, habilidades, enemigo = false){
+  constructor(tipo, estadisticas, lista, enemigo = false){
+    this.nombre = "";
+    this.objetivo = 0,
+    this.objetivoPortrait = enemigo ? $("#seccion-estadisticas .ui.card") : $(".panel.enemigo .ui.card")
+    this.portrait = enemigo ? $(".panel.enemigo .ui.card") : $("#seccion-estadisticas .ui.card")
     this.tipo = tipo
     this.estadisticas = estadisticas
     this.esEnemigo = enemigo
+    //Aqui se registra la lista de habilidades como objetos
     this.habilidades = [
-      libro[habilidades[0]],
-      libro[habilidades[1]],
-      libro[habilidades[2]],
-      libro[habilidades[3]]
+      libro[lista[0]],
+      libro[lista[1]],
+      libro[lista[2]],
+      libro[lista[3]]
     ]
+    //Aqui tomamos solo las acciones de cada habilidad
+    //y se las damos a nuestro personaje
+    this.habilidad1 = this.habilidades[0].accion
+    this.habilidad2 = this.habilidades[1].accion
+    this.habilidad3 = this.habilidades[2].accion
+    this.habilidad4 = this.habilidades[3].accion
   }
   
+  actualizarObjetivo() {
+    this.objetivo = this.esEnemigo ? juego.personaje : juego.enemigoActual
+  }
 }
 
 // Creamos la constante que contiene los personajes. Es un
@@ -112,4 +126,3 @@ const personajes = [
       [1, 2, 0, 4]
     )
   ]
-
