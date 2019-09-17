@@ -1,6 +1,11 @@
 /* Aqui estan todas las mecanicas del juego,
 tambien un libro con todas las habilidades*/
 
+/*Estas son todas funciones globales, es decir,
+  son mecanicas genericas como restar vida, sumar defensa, etc.
+  Al crear una nueva habilidad solo hay que poner el orden de las
+  acciones y listo, 
+*/
 // Actualiza los valores cuando hay cambios
 function update(){
     actualizarValoresEnemigo();
@@ -17,7 +22,8 @@ function gastarMana(usuario, valor){
 }
 
 //Calculo de daño generico para daño fisico
-//usuario es el que ha invocado el hechizo
+//usuario es el que ha invocado el hechizo,
+//el daño se calcula entre ataque y defensa
 function ataqueFisico(usuario){
     usuario.objetivoPortrait.transition("shake");
     let danioEfectuado =

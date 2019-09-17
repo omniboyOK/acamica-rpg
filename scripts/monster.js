@@ -2,8 +2,8 @@ const enemigos = [
     new Personaje(
       "Orco",
       estadisticas = {
-        ataque: 50,
-        defensa: 30,
+        ataque: 30,
+        defensa: 20,
         maxVida: 250,
         vida: 250,
         maxMana: 750,
@@ -16,7 +16,7 @@ const enemigos = [
     new Personaje(
       "Slime",
       estadisticas = {
-        ataque: 50,
+        ataque: 40,
         defensa: 20,
         maxVida: 200,
         vida: 200,
@@ -30,10 +30,10 @@ const enemigos = [
     new Personaje(
       "Demonio",
       estadisticas = {
-        ataque: 50,
+        ataque: 30,
         defensa: 80,
-        maxVida: 400,
-        vida: 400,
+        maxVida: 200,
+        vida: 200,
         maxMana: 2500,
         mana: 2500,
         portrait: "img/enemigos/demonio.png"
@@ -44,8 +44,8 @@ const enemigos = [
     new Personaje(
       "Esqueleto",
       estadisticas = {
-        ataque: 100,
-        defensa: 20,
+        ataque: 60,
+        defensa: 10,
         maxVida: 600,
         vida: 600,
         maxMana: 250,
