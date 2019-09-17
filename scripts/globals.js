@@ -18,21 +18,26 @@ function scrollLog() {
   log.animate({ scrollTop: $("#juego-historial")[0].scrollHeight }, 500)
 }
 
-var menu = $("#habilidades-jugador")
+var menu = $("#habilidades-jugador");
 
 // Variable que maneja los turnos
 
 function swapTurn() {
+  if (!juego.turnoJugador) {
+    menu.css("pointer-events", "none");
+    
+  } else{
+    menu.css("pointer-events", "auto");
+    menu.show(500)
+  }  
   juego.turnoJugador = !juego.turnoJugador
 }
 
 /* Esta funcion cambia los turnos */
 function nextTurn() {
   if (juego.turnoJugador) {
-    menu.transition("fly up")
     swapTurn()
   } else {
-    menu.transition("fly up")
     swapTurn()
     setTimeout(function() {
       switch(Math.floor(Math.random() * 2)){

@@ -5,8 +5,8 @@ class Personaje{
   constructor(tipo, estadisticas, lista, enemigo = false){
     this.nombre = "";
     this.objetivo = 0,
-    this.objetivoPortrait = enemigo ? $("#seccion-estadisticas .ui.card") : $(".panel.enemigo .ui.card")
-    this.portrait = enemigo ? $(".panel.enemigo .ui.card") : $("#seccion-estadisticas .ui.card")
+    this.objetivoPortrait = enemigo ? $("#player_portrait") : $("#enemy_portrait")
+    this.portrait = enemigo ? $("#enemy_portrait") : $("#player_portrait")
     this.tipo = tipo
     this.estadisticas = estadisticas
     this.esEnemigo = enemigo
