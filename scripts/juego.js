@@ -167,7 +167,7 @@ function actualizarHabilidadesJugador() {
   // pero toman los datos de la lista de habilidades
   juego.personaje.habilidades.forEach(function(value, index) {
     let boton = document.createElement("a");
-    boton.classList.add("ui", "teal", "item");
+    boton.classList.add("ui", "item", "enabled");
     $(boton).click(() => {
       switch (index) {
         case 0:

@@ -25,10 +25,11 @@ var menu = $("#habilidades-jugador");
 function swapTurn() {
   if (!juego.turnoJugador) {
     menu.css("pointer-events", "none");
-    
+    menu.addClass('disabled');
   } else{
     menu.css("pointer-events", "auto");
     menu.show(500)
+    menu.removeClass('disabled');
   }  
   juego.turnoJugador = !juego.turnoJugador
 }

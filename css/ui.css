@@ -192,7 +192,11 @@ img {
 }
 
 #habilidades-jugador .item {
-  border: 1px solid grey;
+  font-weight: bold;
+}
+
+#habilidades-jugador.disabled .item {
+  color: grey;
 }
 
 .ui.progress {
